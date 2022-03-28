@@ -2,6 +2,6 @@
 
 Account::Account() {}
 
-Account::Account(const int &dollars1, const int &cents1):Money{dollars1, cents1} {}
+Account::Account(const Money &m2):m1{m2} {}
 
 Account::~Account() {}

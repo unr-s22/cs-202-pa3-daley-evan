@@ -13,7 +13,7 @@ class Money {
         int dollars;
         int cents;
         int currentBalance;
-        std::vector<int> all_cents;
+        int all_cents;
 
     public:
         Money();
@@ -48,25 +48,23 @@ class Money {
             return all_cents == rhs.all_cents;
         }
 
-        //Needs fixing
-        //Money operator+= (const Money &rhs) {
-            //return all_cents += rhs.all_cents;
-        //}
+        Money& operator+=(Money const& rhs) {
+            this->all_cents += rhs.all_cents;
+            return *this;
+        }
+
+        Money operator+(Money const& rhs) const {
+            Money temp = *this;
+            return (temp += rhs);
+        }
 
         //Money operator- (const Money &rhs) { 
             //return *this;
         //}
-
-        //Money operator*(const Money &rhs) {
-            //return all_cents * rhs.all_cents;
-        //}    
         
         friend std::ostream &operator<<(std::ostream &os, const Money &money) {
-            for (auto i : money.all_cents) {
-                std::cout << std::fixed;
-                os << "$" << std::setprecision(2) << i*0.01;
-	            return os;
-            } 
+            os << "$" << money.all_cents * 0.01;
+            return os;
         }   
         
 
