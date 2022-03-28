@@ -6,4 +6,14 @@ Money::Money(const int &m_dollars, const int &m_cents):dollars{m_dollars}, cents
     Money::all_cents.push_back((m_dollars*100) + m_cents);
 }
 
+//Not sure if needed
+/*void Money::setcurrentBalance(int currentBalance) {
+    Money::currentBalance = currentBalance;
+}
+
+int Money::getcurrentBalance() const {
+    return currentBalance;
+} */
+
 Money::~Money() {}
+
