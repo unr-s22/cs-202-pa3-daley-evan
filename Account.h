@@ -12,14 +12,15 @@
 class Account: public Money {
 
     private:
+        Money m1;
         std::vector<Money> deposits;
         std::vector<Money> withdrawls;
         bool needUpdate;
         
 
     public:
-Account();
-        explicit Account(const int &dollars1, const int &cents1);
+        Account();
+        explicit Account(const Money &m2);
 
         void makeWithdrawls(Money m) {
             needUpdate = true;
@@ -30,13 +31,16 @@ Account();
             needUpdate = true;
             deposits.push_back(n);
         }
+
+        Money sumDeposits() const {
+            Money o;
+            auto sum_deposits = std::accumulate(deposits.begin(), deposits.end(), o);
+            return sum_deposits;
+        }
         
         friend std::ostream &operator << (std::ostream &os, const Account &account) {
-            Money o;
-            if (account.needUpdate == true) {
-                os << std::accumulate(account.deposits.begin(), account.deposits.end(), o) << std::endl;
-	            
-            }
+            
+            os << account.sumDeposits() << std::endl;
             return os;
         }   
 

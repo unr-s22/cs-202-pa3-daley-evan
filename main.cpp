@@ -19,8 +19,8 @@ int main() {
     else {
         std::cout << "No" << std::endl;
     }*/
-
-    Account account(300,23);
+    Money initial(300,23);
+    Account account(initial);
     Money dep1(100,10);
     account.makeDeposits(dep1);
     std::cout << account << std::endl;
