@@ -49,18 +49,22 @@ class Money {
         }
 
         //Needs fixing
-        //Money operator+= (const Money &rhs) {
-            //return all_cents += rhs.all_cents;
-        //}
+        int operator+ (const Money &rhs) {
+            for (auto i : all_cents) {
+                return all_cents[i] += rhs.all_cents[i];
+            }
+        }
 
-        //Money operator- (const Money &rhs) { 
+        //Money operator- (const Money &rhs) {
             //return *this;
         //}
 
-        //Money operator*(const Money &rhs) {
-            //return all_cents * rhs.all_cents;
-        //}    
-        
+        auto operator*(const Money &rhs) {
+            for (auto i : all_cents) {
+                return all_cents[i] * rhs.all_cents[i];
+            }
+        }
+
         friend std::ostream &operator<<(std::ostream &os, const Money &money) {
             for (auto i : money.all_cents) {
                 std::cout << std::fixed;

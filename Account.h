@@ -18,7 +18,7 @@ class Account: public Money {
         
 
     public:
-        Account();
+Account();
         explicit Account(const int &dollars1, const int &cents1);
 
         void makeWithdrawls(Money m) {
