@@ -1,7 +1,8 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <iomanip>
+//#include <iostream>
+//#include <fstream>
+//#include <string>
+//#include <vector>
+//#include <iomanip>
 #include "Money.h"
 #include "Account.h"
 
@@ -21,9 +22,9 @@ int main() {
     }*/
     Money initial(300,23);
     Account account(initial);
-    Money dep1(100,10);
-    account.makeDeposits(dep1);
-    std::cout << account << std::endl;
+    //Money dep1(100,10);
+    //account.makeDeposits(dep1);
+    std::cout << account<< std::endl;
 
     
     return 0;
