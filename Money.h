@@ -64,13 +64,18 @@ class Money {
             return (temp += rhs);
         }
 
-        //Money operator- (const Money &rhs) { 
-            //return *this;
-        //}
+        Money& operator-=(Money const& rhs) {
+            this->all_cents -= rhs.all_cents;
+            return *this;
+        }
+
+        Money operator-(Money const& rhs) const {
+            Money temp = *this;
+            return (temp -= rhs);
+        }
         
         friend std::ostream &operator<<(std::ostream &os, const Money &money) {
             os << "$" << money.all_cents * 0.01;
-           // std::cout<<money.all_cents<<" ta"<<std::endl;
             return os;
         }   
         
