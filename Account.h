@@ -22,6 +22,9 @@ class Account: public Money {
         Account();
         explicit Account(const Money &m2);
 
+        Money printacc() {
+            return m1;
+        }
         void makeWithdrawls(Money m) {
             needUpdate = true;
             withdrawls.push_back(m);
@@ -37,14 +40,22 @@ class Account: public Money {
             auto sum_deposits = std::accumulate(deposits.begin(), deposits.end(), o);
             return sum_deposits;
         }
-        
+
         friend std::ostream &operator << (std::ostream &os, const Account &account) {
             
             os << account.sumDeposits() << std::endl;
             return os;
-        }   
+        }
 
-        virtual ~Account();
+    friend std::ostream &operator << (std::ostream &os,  Account &account) {
+
+        os << account.printacc() << std::endl;
+        return os;
+    }
+
+
+
+    virtual ~Account();
 };
 
 #endif
