@@ -42,7 +42,7 @@ class Money {
             //std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents < rhs.all_cents);
         }
-        /*
+
         bool operator!= (const Money &rhs) {
           //  std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents == rhs.all_cents);
@@ -52,7 +52,7 @@ class Money {
            // std::cout<<all_cents<<" ta"<<std::endl;
             return all_cents == rhs.all_cents;
         }
-        */
+
         Money& operator+=(Money const& rhs) {
             this->all_cents += rhs.all_cents;
            // std::cout<<rhs.all_cents<<" ta"<<std::endl;
