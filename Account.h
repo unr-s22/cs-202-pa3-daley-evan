@@ -43,28 +43,25 @@ class Account: public Money {
         int get_c_withdrals(){
             return c_withdrals;
         }
+
         Money Withdrawls_Update(){
             c_withdrals_clon = c_withdrals;
-            if (i == c_withdrals_clon){
-                return m1 ;
-            }
-            else if(i < c_withdrals_clon){
+            while(i < c_withdrals_clon) {
                 m1 = m1 - withdrawls[i];
                 i++;
             }
             return m1;
         }
+
     Money Deposits_Update(){
         c_deposits_clon = c_deposits;
-            if (i == c_deposits_clon){
-                return m1 ;
-            }
-            else if(i < c_deposits_clon){
-                m1 = m1 +deposits[i];
-                        i++;
-            }
+        while(i < c_deposits_clon) {
+            m1 = m1 + deposits[i];
+            i++;
+        }
         return m1;
     }
+
         void makeWithdrawls(Money m) {
             needUpdate_Withdrawls = true;
             withdrawls.push_back(m);
@@ -83,9 +80,12 @@ class Account: public Money {
             return sum_deposits;
         }
         void get_deposits(){
-            for(i=0; i==c_deposits_clon; i++){
+            i = 0;
+            if(i < c_deposits_clon){
                 std::cout<< deposits[i]<<std::endl;
                 std::cout<< i <<std::endl;
+                std::cout<< c_deposits_clon <<std::endl;
+                i++;
             }
         }
         /*
@@ -100,7 +100,7 @@ class Account: public Money {
         os << "Current Balance:"<<account.get_m1() << std::endl;
         std::cout<<"--------------------------"<<std::endl;
         std::cout<<"Number of Deposits:"<< account.get_c_deposits() << std::endl;
-        std::cout<<account.get_c_deposits()<<std::endl;
+        account.get_deposits();
         return os;
     }
 
