@@ -53,10 +53,11 @@ class Account: public Money {
         }
     Money Deposits_Update(){
         c_deposits_clon = c_deposits;
-            for (i; i == c_deposits_clon--; i++); {
+            for (i=0; i == c_deposits_clon; i++); {
             std::cout<< i <<std::endl;
-                return m1 + deposits[i];
+            m1 = m1 + deposits[i];
             }
+        return m1 ;
     }
         void makeWithdrawls(Money m) {
             needUpdate_Withdrawls = true;
