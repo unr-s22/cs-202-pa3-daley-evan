@@ -60,6 +60,7 @@ class Account: public Money {
 
         void makeWithdrawls(Money m) {
             needUpdate_Withdrawls = true;
+            c_withdrals++;
             withdrawls.push_back(m);
         }
 
