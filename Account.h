@@ -15,7 +15,8 @@ class Account: public Money {
         Money m1;
         std::vector<Money> deposits;
         std::vector<Money> withdrawls;
-        bool needUpdate;
+        bool needUpdate_Withdrawls= false;
+        bool needUpdate_Deposits= false;
         
 
     public:
@@ -23,16 +24,29 @@ class Account: public Money {
         explicit Account(const Money &m2);
 
         Money printacc() {
-            return m1;
+            if (needUpdate_Withdrawls== true){
+                return Withdrawls_Update();
+            } else if (needUpdate_Deposits== true){
+                return Deposits_Update();
+            } else{
+                return m1;
+            }
         }
+        Money Withdrawls_Update(){
+            return m1 + withdrawls[0];
+        }
+    Money Deposits_Update(){
+        return m1 + deposits[0];
+    }
         void makeWithdrawls(Money m) {
-            needUpdate = true;
+            needUpdate_Withdrawls = true;
             withdrawls.push_back(m);
         }
 
         void makeDeposits(Money n) {
-            needUpdate = true;
+            needUpdate_Deposits = true;
             deposits.push_back(n);
+            //std::cout<<deposits[0]<<std::endl;
         }
 
         Money sumDeposits() const {

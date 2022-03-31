@@ -22,8 +22,8 @@ int main() {
     }*/
     Money initial(300,23);
     Account account(initial);
-    //Money dep1(100,10);
-    //account.makeDeposits(dep1);
+    Money dep1(100,10);
+    account.makeDeposits(dep1);
     std::cout << account<< std::endl;
 
     
