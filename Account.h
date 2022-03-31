@@ -1,12 +1,8 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-//#include <iostream>
-//#include <string>
-//#include <vector>
 #include <numeric>
 #include <algorithm>
-//#include <iomanip>
 #include "Money.h"
 
 class Account: public Money {
@@ -50,13 +46,13 @@ class Account: public Money {
             return m1;
         }
 
-    Money Deposits_Update(){
-        while(i < c_deposits) {
-            m1 = m1 + deposits[i];
-            i++;
+        Money Deposits_Update(){
+            while(i < c_deposits) {
+                m1 = m1 + deposits[i];
+                i++;
+            }
+            return m1;
         }
-        return m1;
-    }
 
         void makeWithdrawls(Money m) {
             needUpdate_Withdrawls = true;
@@ -68,14 +64,8 @@ class Account: public Money {
             needUpdate_Deposits = true;
             c_deposits++;
             deposits.push_back(n);
-            //std::cout<<deposits[0]<<std::endl;
         }
 
-        Money sumDeposits() const {
-            Money o;
-            auto sum_deposits = std::accumulate(deposits.begin(), deposits.end(), o);
-            return sum_deposits;
-        }
         void get_deposits(){
             i = 0;
             while (i < c_deposits){
@@ -85,41 +75,32 @@ class Account: public Money {
                 i++;
             }
         }
-    void get_Withdrawls(){
-        i = 0;
-        while (i < c_withdrals){
-            int j =i;
-            j++;
-            std::cout<<"("<<j<<")" <<" "<<withdrawls[i]<<std::endl;
-            i++;
+        void get_Withdrawls(){
+            i = 0;
+            while (i < c_withdrals){
+                int j =i;
+                j++;
+                std::cout<<"("<<j<<")" <<" "<<withdrawls[i]<<std::endl;
+                i++;
+            }
         }
-    }
-        /*
-        friend std::ostream &operator << (std::ostream &os, const Account &account) {
-            
-            os << account.sumDeposits() << std::endl;
+
+        friend std::ostream &operator << (std::ostream &os,  Account &account) {
+            std::cout<<"--------------------------"<<std::endl;
+            os << "Current Balance: "<<account.get_m1() << std::endl;
+            std::cout<<"--------------------------"<<std::endl;
+            std::cout<<"Number of Deposits: "<< account.get_c_deposits() << std::endl;
+            account.get_deposits();
+            std::cout<<"--------------------------"<<std::endl;
+            std::cout<<"Number of Withdrawals: "<< account.get_c_withdrals() << std::endl;
+            std::cout<<"--------------------------"<<std::endl;
+            account.get_Withdrawls();
+            std::cout<<"--------------------------"<<std::endl;
+
             return os;
         }
-        */
-    friend std::ostream &operator << (std::ostream &os,  Account &account) {
-        std::cout<<"--------------------------"<<std::endl;
-        os << "Current Balance: "<<account.get_m1() << std::endl;
-        std::cout<<"--------------------------"<<std::endl;
-        std::cout<<"Number of Deposits: "<< account.get_c_deposits() << std::endl;
-        account.get_deposits();
-        std::cout<<"--------------------------"<<std::endl;
-        std::cout<<"Number of Withdrawals: "<< account.get_c_withdrals() << std::endl;
-        std::cout<<"--------------------------"<<std::endl;
-        account.get_Withdrawls();
-        std::cout<<"--------------------------"<<std::endl;
 
-
-        return os;
-    }
-
-
-
-    virtual ~Account();
+        virtual ~Account();
 };
 
 #endif

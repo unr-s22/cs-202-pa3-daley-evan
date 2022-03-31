@@ -19,43 +19,32 @@ class Money {
         Money();
         explicit Money(const int &m_dollars, const int &m_cents);
 
-        //not sure if needed
-        //void setcurrentBalance(int currentBalance);
-        //int getcurrentBalance() const;
-
         bool operator< (const Money &rhs) const {
-          //  std::cout<<all_cents<<" ta"<<std::endl;
 		    return all_cents < rhs.all_cents;
 	    }
 
         bool operator> (const Money &rhs) {
-           // std::cout<<all_cents<<" ta"<<std::endl;
             return all_cents > rhs.all_cents;
         }
 
         bool operator<= (const Money &rhs) {
-          //  std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents > rhs.all_cents);
         }
 
         bool operator>= (const Money &rhs) {
-            //std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents < rhs.all_cents);
         }
 
         bool operator!= (const Money &rhs) {
-          //  std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents == rhs.all_cents);
         }
 
         bool operator== (const Money &rhs) {
-           // std::cout<<all_cents<<" ta"<<std::endl;
             return all_cents == rhs.all_cents;
         }
 
         Money& operator+=(Money const& rhs) {
             this->all_cents += rhs.all_cents;
-           // std::cout<<rhs.all_cents<<" ta"<<std::endl;
             return *this;
         }
 
@@ -78,11 +67,8 @@ class Money {
             os << "$" << money.all_cents * 0.01;
             return os;
         }   
-        
 
         virtual ~Money();
 };
-
-
 
 #endif
