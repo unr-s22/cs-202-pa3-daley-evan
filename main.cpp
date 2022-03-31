@@ -24,8 +24,13 @@ int main() {
     Account account(initial);
     Money dep1(100,10);
     Money dep2(100,10);
+    Money dep3(100,10);
+    Money with1(200,44);
     account.makeDeposits(dep1);
     account.makeDeposits(dep2);
+    account.makeDeposits(dep3);
+    account.makeWithdrawls(with1);
+
     std::cout << account<< std::endl;
 
     //Test cases for relational operators

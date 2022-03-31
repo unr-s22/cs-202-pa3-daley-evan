@@ -15,9 +15,7 @@ class Account: public Money {
         Money m1;
         int i =0;
         int c_deposits=0;
-        int c_deposits_clon = c_deposits;
         int c_withdrals=0;
-        int c_withdrals_clon = c_withdrals;
         std::vector<Money> deposits;
         std::vector<Money> withdrawls;
         bool needUpdate_Withdrawls= false;
@@ -45,8 +43,7 @@ class Account: public Money {
         }
 
         Money Withdrawls_Update(){
-            c_withdrals_clon = c_withdrals;
-            while(i < c_withdrals_clon) {
+            while(i < c_withdrals) {
                 m1 = m1 - withdrawls[i];
                 i++;
             }
@@ -54,8 +51,7 @@ class Account: public Money {
         }
 
     Money Deposits_Update(){
-        c_deposits_clon = c_deposits;
-        while(i < c_deposits_clon) {
+        while(i < c_deposits) {
             m1 = m1 + deposits[i];
             i++;
         }
@@ -81,13 +77,22 @@ class Account: public Money {
         }
         void get_deposits(){
             i = 0;
-            if(i < c_deposits_clon){
-                std::cout<< deposits[i]<<std::endl;
-                std::cout<< i <<std::endl;
-                std::cout<< c_deposits_clon <<std::endl;
+            while (i < c_deposits){
+                int j =i;
+                j++;
+                std::cout<<"("<<j<<")" <<" "<<deposits[i]<<std::endl;
                 i++;
             }
         }
+    void get_Withdrawls(){
+        i = 0;
+        while (i < c_withdrals){
+            int j =i;
+            j++;
+            std::cout<<"("<<j<<")" <<" "<<withdrawls[i]<<std::endl;
+            i++;
+        }
+    }
         /*
         friend std::ostream &operator << (std::ostream &os, const Account &account) {
             
@@ -97,10 +102,17 @@ class Account: public Money {
         */
     friend std::ostream &operator << (std::ostream &os,  Account &account) {
         std::cout<<"--------------------------"<<std::endl;
-        os << "Current Balance:"<<account.get_m1() << std::endl;
+        os << "Current Balance: "<<account.get_m1() << std::endl;
         std::cout<<"--------------------------"<<std::endl;
-        std::cout<<"Number of Deposits:"<< account.get_c_deposits() << std::endl;
+        std::cout<<"Number of Deposits: "<< account.get_c_deposits() << std::endl;
         account.get_deposits();
+        std::cout<<"--------------------------"<<std::endl;
+        std::cout<<"Number of Withdrawals: "<< account.get_c_withdrals() << std::endl;
+        std::cout<<"--------------------------"<<std::endl;
+        account.get_Withdrawls();
+        std::cout<<"--------------------------"<<std::endl;
+
+
         return os;
     }
 
