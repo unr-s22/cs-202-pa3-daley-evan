@@ -7,7 +7,7 @@ main.o: main.cpp
 Money.o: Money.cpp Money.h
 	g++ -std=c++11 -c Money.cpp
 
-Account.o: Account.cpp Account.h
+Account.o: Account.h Account.cpp
 	g++ -std=c++11 -c Account.cpp
 
 clean:

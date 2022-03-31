@@ -1,7 +1,7 @@
 
 #ifndef MONEY_H
 #define MONEY_H
-
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -10,10 +10,10 @@
 class Money {
 
     private:
-        int dollars;
-        int cents;
-        int currentBalance;
-        int all_cents;
+        int dollars= 0;
+        int cents=0;
+        int currentBalance=0;
+        int all_cents=0;
 
     public:
         Money();
@@ -24,32 +24,38 @@ class Money {
         //int getcurrentBalance() const;
 
         bool operator< (const Money &rhs) const {
+          //  std::cout<<all_cents<<" ta"<<std::endl;
 		    return all_cents < rhs.all_cents;
 	    }
 
         bool operator> (const Money &rhs) {
-
+           // std::cout<<all_cents<<" ta"<<std::endl;
             return all_cents > rhs.all_cents;
         }
 
         bool operator<= (const Money &rhs) {
+          //  std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents > rhs.all_cents);
         }
 
         bool operator>= (const Money &rhs) {
+            //std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents < rhs.all_cents);
         }
 
         bool operator!= (const Money &rhs) {
+          //  std::cout<<all_cents<<" ta"<<std::endl;
             return !(all_cents == rhs.all_cents);
         }
 
         bool operator== (const Money &rhs) {
+           // std::cout<<all_cents<<" ta"<<std::endl;
             return all_cents == rhs.all_cents;
         }
 
         Money& operator+=(Money const& rhs) {
             this->all_cents += rhs.all_cents;
+           // std::cout<<rhs.all_cents<<" ta"<<std::endl;
             return *this;
         }
 
@@ -58,9 +64,15 @@ class Money {
             return (temp += rhs);
         }
 
-        //Money operator- (const Money &rhs) { 
-            //return *this;
-        //}
+        Money& operator-=(Money const& rhs) {
+            this->all_cents -= rhs.all_cents;
+            return *this;
+        }
+
+        Money operator-(Money const& rhs) const {
+            Money temp = *this;
+            return (temp -= rhs);
+        }
         
         friend std::ostream &operator<<(std::ostream &os, const Money &money) {
             os << "$" << money.all_cents * 0.01;
