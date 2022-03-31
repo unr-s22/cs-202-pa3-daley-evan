@@ -13,6 +13,9 @@ class Account: public Money {
 
     private:
         Money m1;
+        int i =0;
+        int c_deposits=0;
+        int c_withdrals=0;
         std::vector<Money> deposits;
         std::vector<Money> withdrawls;
         bool needUpdate_Withdrawls= false;
@@ -33,10 +36,14 @@ class Account: public Money {
             }
         }
         Money Withdrawls_Update(){
-            return m1 + withdrawls[0];
+            for (i; i == c_withdrals--; i++); {
+                return m1 + withdrawls[i];
+            }
         }
     Money Deposits_Update(){
-        return m1 + deposits[0];
+            for (i; i == c_deposits--; i++); {
+                return m1 + deposits[i];
+            }
     }
         void makeWithdrawls(Money m) {
             needUpdate_Withdrawls = true;
@@ -45,6 +52,7 @@ class Account: public Money {
 
         void makeDeposits(Money n) {
             needUpdate_Deposits = true;
+            c_deposits++;
             deposits.push_back(n);
             //std::cout<<deposits[0]<<std::endl;
         }
